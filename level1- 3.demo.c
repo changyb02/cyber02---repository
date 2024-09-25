@@ -1,42 +1,42 @@
-//#include<stdio.h>
-//
-//int main()
-//{
-//	char str[100];
-//	int num, price, quan, require, sum, put;
-//	scanf("%s %d %d %d", &str, &num, &price, &quan);
-//	while (1)
-//	{
-//		printf("ÇëÊäÈëÄúËùĞèÎïÆ·µÄĞòºÅ¼°ÊıÁ¿:\n");
-//		scanf("%s %d %d", &str, &num, &require);
-//		if (1 <= num && num <= 5 && quan <= 50)
-//		{
-//			if (require <= quan && require > 0)
-//			{
-//				sum = require * price;
-//				while (1)
-//				{
-//					printf("ÇëÍ¶±Ò\n");
-//					scanf("%d", &put);
-//					if (put >= sum)
-//					{
-//						break;
-//					}
-//					sum -= put;
-//				}
-//				int change = put - sum;
-//				printf("ÕÒÄú:%dÔª\n", change);
-//				printf("-------------\n");
-//				quan -= require;
-//			}//Õı³£ÊıÁ¿µÄÑ­»·
-//			else
-//			{
-//				printf("»õÆ·ÊıÁ¿²»×ã£¬ÇëÖØĞÂÊäÈë\n");
-//			}
-//		}//¿Í»§µÄÕı³£ÊäÈë
-//		else
-//		{
-//			printf("ÄúÊäÈëµÄÊı¾İÓĞÎó£¬ÇëÖØĞÂÊäÈë");
-//		}
-//	}//×ÜµÄ¹ºÎïÑ­»·
-//}
+#include<stdio.h>
+
+int main()
+{
+	char str[100];
+	int num, price, quan, require, sum, put;
+	scanf("%s %d %d %d", &str, &num, &price, &quan);
+	while (1)
+	{
+		printf("è¯·è¾“å…¥æ‚¨æ‰€éœ€ç‰©å“çš„åºå·åŠæ•°é‡:\n");
+		scanf("%s %d %d", &str, &num, &require);
+		if (1 <= num && num <= 5 && quan <= 50)
+		{
+			if (require <= quan && require > 0)
+			{
+				sum = require * price;
+				while (1)
+				{
+					printf("è¯·æŠ•å¸\n");
+					scanf("%d", &put);
+					if (put >= sum)
+					{
+						break;
+					}
+					sum -= put;
+				}
+				int change = put - sum;
+				printf("æ‰¾æ‚¨:%då…ƒ\n", change);
+				printf("-------------\n");
+				quan -= require;
+			}//æ­£å¸¸æ•°é‡çš„å¾ªç¯
+			else
+			{
+				printf("è´§å“æ•°é‡ä¸è¶³ï¼Œè¯·é‡æ–°è¾“å…¥\n");
+			}
+		}//å®¢æˆ·çš„æ­£å¸¸è¾“å…¥
+		else
+		{
+			printf("æ‚¨è¾“å…¥çš„æ•°æ®æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥");
+		}
+	}//æ€»çš„è´­ç‰©å¾ªç¯
+}
