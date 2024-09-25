@@ -1,176 +1,176 @@
-//#include<stdio.h>
-//#include<string.h> 
-//
-//int main()
-//{
-//    int price[1024], chanput[1024], quanput[1024];
-//    char strput[1024][100];
-//    int chanbuy[1024], require[1024];//·ÀÖ¹Òç³ö
-//    int requiresum[1024] = {0};
-//    char strbuy[1024][100];
-//    int chanback, quanback;
-//    int money;
-//    int i = 0;
-//    int sum = 0, moneyback = 0;
-//
-//     while (1)//·ÅÖÃÑ­»·
-//     {
-//         scanf("%s", &strput[i]);
-//         if (strcmp(strput[i], "END") == 0)
-//             break;
-//         scanf("%d %d %d", &chanput[i], &price[i], &quanput[i]);
-//         i++;
-//     }
-//     for (int j = 0; j < i; j++) {
-//         printf("Name:  %s,Channel: %d, Price: %d, Quantity: %d\n", strput[j],chanput[j], price[j], quanput[j]);
-//     }//·ÅÖÃÑ­»·
-//
-//     while (1)
-//     {
-//         int j = 0, count = 0;
-//         while (1)//¹ºÎïÑ­»·
-//         {
-//             scanf("%s", &strbuy[j]);
-//             if (strcmp(strbuy[j], "END") == 0)
-//                 break;
-//             if (strcmp(strbuy[j], "BACK") == 0 && j > 0)//»Ø³·
-//             {
-//                 if (count < 3)
-//                 {
-//                     int found = 0;
-//                     for (int i = 0; i < 5; i++)
-//                     {
-//                         if (chanbuy[j - 1] == chanput[i])
-//                         {
-//                             quanput[i] += require[j - 1];
-//                             requiresum[i] -= require[j - 1];
-//                             sum -= require[j - 1] * price[i];
-//                             printf("ÒÑ³É¹¦³·»ØÉÏÒ»¸öÉÌÆ·\n");
-//                             printf("µ±Ç°¼Û¸ñÎª:%dÔª\n", sum);
-//                             printf("Äú»¹Ê£Óà%d´Î»ú»á\n", 2 - count);
-//                             found = 1;
-//                             j--; // ³·»Øºó£¬¼õÉÙ¹ºÂò¼ÇÂ¼Ë÷Òı
-//                             count++;
-//                             break;
-//                         }
-//                     }
-//                     if (!found)
-//                     {
-//                         printf("ÄúÊäÈëµÄĞÅÏ¢ÓĞÎó£¬ÎŞ·¨½øĞĞÍË»õ\n");
-//                     }
-//                     else
-//                     {
-//                         continue;
-//                     }
-//                 }
-//                 else
-//                 {
-//                     printf("ÄúÒÑ³·»Ø3´Î£¬ÎŞ·¨¼ÌĞø³·»Ø£¬ÊäÈëEND½áÊø¹ºÂò»òÕß¼ÌĞø¹ºÎï\n");
-//                     continue;
-//                 }//³·»Ø½áÊø
-//             }
-//             scanf("%d %d", &chanbuy[j], &require[j]);//ÊäÈë¹ºÂòÑ¡Ôñ
-//             count = 0;
-//             int found = 0;
-//             for (int i = 0; i < 5; i++)
-//             {
-//                 if (chanbuy[j] == chanput[i] && strcmp(strbuy[j], strput[i]) == 0)//Ê¹ÉÌÆ·¶ÔÓ¦
-//                 {
-//                     if (require[j] > quanput[i])
-//                     {
-//                         printf("»õÎï²»×ã\n");
-//                         break;
-//                     }
-//                     else
-//                     {
-//                         if (chanbuy[j] == chanput[i] && strcmp(strbuy[j], strput[i]) == 0)
-//                         {
-//                             requiresum[i] += require[j];
-//                             printf("ÄúÒÑ¹ºÂò%d¸ö", requiresum[i]);
-//                         }
-//                         quanput[i] -= require[j];
-//                         sum += require[j] * price[i];//¼ÆËã¼ÛÇ®
-//                         printf("µ±Ç°¼Û¸ñÎª%dÔª\n", sum);
-//                         found = 1;
-//                     }
-//                     break;
-//                 }
-//             }
-//             if (!found)
-//             {
-//                 printf("ÄúÊäÈëµÄÉÌÆ·Óë»õ¼Ü²»¶ÔÓ¦£¬ÇëÖØĞÂÊäÈë\n");
-//             }
-//             j++;
-//         }//¹ºÎïÑ­»·
-//
-//         printf("ÄúËùĞèÒªµÄ×Ü½ğ¶îÎª:%dÔª\n", sum);
-//         while (sum > 0)//Ö§¸¶Ñ­»·
-//         {
-//             printf("ÇëÍ¶±Ò£¨½öÖ§³Ö1Ôª£¬2Ôª£¬5Ôª£©\n");
-//             scanf("%d", &money);
-//             if (money == 1 || money == 2 || money == 5)
-//             {
-//                 sum -= money;
-//                 if (sum > 0)
-//                 {
-//                     printf("Äú»¹ĞèÒªÍ¶%dÔª\n", sum);
-//                 }
-//             }
-//             else
-//             {
-//                 printf("ÄúµÄÍ¶±Ò²»·ûºÏÉÏÊöÌõ¼ş\n");
-//             }
-//         }//Ö§¸¶Ñ­»·
-//         printf("ÕÒÄú:%dÔª\n", -sum);
-//
-//         int choose;
-//         j = 0;
-//         while (1)//ÍË»õÑ­»·
-//         {
-//             printf("ĞèÒª»ØÍËÉÌÆ·ÇëÊäÈë1£¬²»ĞèÒªÇëÊäÈë2\n");
-//             scanf("%d", &choose);
-//             if (choose == 2)
-//                 break;
-//             else if (choose == 1)
-//             {
-//                 printf("ÇëÊäÈëÄúĞèÒªÍËµÄÎïÆ·ĞÍºÅ,»õ¼Ü¼°¸öÊı\n");
-//                 scanf("%s %d %d", strbuy, &chanback, &quanback);
-//                 for (int i = 0; i < 5; i++)
-//                 {
-//                     if (chanback == chanput[i])//Ê¹ÉÌÆ·¶ÔÓ¦
-//                     {
-//                         if (quanback > requiresum[i])
-//                         {
-//                             printf("ÄúÎ´¹ºÂò¸ÃÊıÁ¿µÄÉÌÆ·£¬ÇëÖØĞÂÊäÈë\n");
-//                             break;
-//                         }
-//                         else
-//                         {
-//                             moneyback = price[i] * quanback;
-//                             printf("ÍË¿î%dÔª\n", moneyback);
-//                             quanput[i] += quanback;
-//                             requiresum[i] -= quanback;
-//                         }
-//                     }
-//                 }
-//             }
-//             else
-//             {
-//                 printf("ÄúÊäÈëµÄĞÅÏ¢ÓĞÎó£¬ÇëÖØĞÂÊäÈë\n");
-//             }
-//         }
-//         int b;
-//         printf("ÄúÊÇ·ñ»¹ĞèÒª¼ÌĞø¹ºÎï?\n1.ĞèÒª 2.²»ĞèÒª\n");
-//         scanf("%d", &b);
-//         if (b == 2)
-//         {
-//             printf("Çë´øºÃÄúµÄÎïÆ·£¬»¶Ó­ÏÂ´Î¹âÁÙ\n");
-//             break;
-//         }
-//         for (int j = 0; j < i; j++)
-//         {
-//             printf("Name: %s,Channel: %d, Price: %d, Quantity: %d\n", strput[j], chanput[j], price[j], quanput[j]);
-//         }
-//     }
-//    return 0;
-//}
+#include<stdio.h>
+#include<string.h> 
+
+int main()
+{
+    int price[1024], chanput[1024], quanput[1024];
+    char strput[1024][100];
+    int chanbuy[1024], require[1024];//é˜²æ­¢æº¢å‡º
+    int requiresum[1024] = {0};
+    char strbuy[1024][100];
+    int chanback, quanback;
+    int money;
+    int i = 0;
+    int sum = 0, moneyback = 0;
+
+     while (1)//æ”¾ç½®å¾ªç¯
+     {
+         scanf("%s", &strput[i]);
+         if (strcmp(strput[i], "END") == 0)
+             break;
+         scanf("%d %d %d", &chanput[i], &price[i], &quanput[i]);
+         i++;
+     }
+     for (int j = 0; j < i; j++) {
+         printf("Name:  %s,Channel: %d, Price: %d, Quantity: %d\n", strput[j],chanput[j], price[j], quanput[j]);
+     }//æ”¾ç½®å¾ªç¯
+
+     while (1)
+     {
+         int j = 0, count = 0;
+         while (1)//è´­ç‰©å¾ªç¯
+         {
+             scanf("%s", &strbuy[j]);
+             if (strcmp(strbuy[j], "END") == 0)
+                 break;
+             if (strcmp(strbuy[j], "BACK") == 0 && j > 0)//å›æ’¤
+             {
+                 if (count < 3)
+                 {
+                     int found = 0;
+                     for (int i = 0; i < 5; i++)
+                     {
+                         if (chanbuy[j - 1] == chanput[i])
+                         {
+                             quanput[i] += require[j - 1];
+                             requiresum[i] -= require[j - 1];
+                             sum -= require[j - 1] * price[i];
+                             printf("å·²æˆåŠŸæ’¤å›ä¸Šä¸€ä¸ªå•†å“\n");
+                             printf("å½“å‰ä»·æ ¼ä¸º:%då…ƒ\n", sum);
+                             printf("æ‚¨è¿˜å‰©ä½™%dæ¬¡æœºä¼š\n", 2 - count);
+                             found = 1;
+                             j--; // æ’¤å›åï¼Œå‡å°‘è´­ä¹°è®°å½•ç´¢å¼•
+                             count++;
+                             break;
+                         }
+                     }
+                     if (!found)
+                     {
+                         printf("æ‚¨è¾“å…¥çš„ä¿¡æ¯æœ‰è¯¯ï¼Œæ— æ³•è¿›è¡Œé€€è´§\n");
+                     }
+                     else
+                     {
+                         continue;
+                     }
+                 }
+                 else
+                 {
+                     printf("æ‚¨å·²æ’¤å›3æ¬¡ï¼Œæ— æ³•ç»§ç»­æ’¤å›ï¼Œè¾“å…¥ENDç»“æŸè´­ä¹°æˆ–è€…ç»§ç»­è´­ç‰©\n");
+                     continue;
+                 }//æ’¤å›ç»“æŸ
+             }
+             scanf("%d %d", &chanbuy[j], &require[j]);//è¾“å…¥è´­ä¹°é€‰æ‹©
+             count = 0;
+             int found = 0;
+             for (int i = 0; i < 5; i++)
+             {
+                 if (chanbuy[j] == chanput[i] && strcmp(strbuy[j], strput[i]) == 0)//ä½¿å•†å“å¯¹åº”
+                 {
+                     if (require[j] > quanput[i])
+                     {
+                         printf("è´§ç‰©ä¸è¶³\n");
+                         break;
+                     }
+                     else
+                     {
+                         if (chanbuy[j] == chanput[i] && strcmp(strbuy[j], strput[i]) == 0)
+                         {
+                             requiresum[i] += require[j];
+                             printf("æ‚¨å·²è´­ä¹°%dä¸ª", requiresum[i]);
+                         }
+                         quanput[i] -= require[j];
+                         sum += require[j] * price[i];//è®¡ç®—ä»·é’±
+                         printf("å½“å‰ä»·æ ¼ä¸º%då…ƒ\n", sum);
+                         found = 1;
+                     }
+                     break;
+                 }
+             }
+             if (!found)
+             {
+                 printf("æ‚¨è¾“å…¥çš„å•†å“ä¸è´§æ¶ä¸å¯¹åº”ï¼Œè¯·é‡æ–°è¾“å…¥\n");
+             }
+             j++;
+         }//è´­ç‰©å¾ªç¯
+
+         printf("æ‚¨æ‰€éœ€è¦çš„æ€»é‡‘é¢ä¸º:%då…ƒ\n", sum);
+         while (sum > 0)//æ”¯ä»˜å¾ªç¯
+         {
+             printf("è¯·æŠ•å¸ï¼ˆä»…æ”¯æŒ1å…ƒï¼Œ2å…ƒï¼Œ5å…ƒï¼‰\n");
+             scanf("%d", &money);
+             if (money == 1 || money == 2 || money == 5)
+             {
+                 sum -= money;
+                 if (sum > 0)
+                 {
+                     printf("æ‚¨è¿˜éœ€è¦æŠ•%då…ƒ\n", sum);
+                 }
+             }
+             else
+             {
+                 printf("æ‚¨çš„æŠ•å¸ä¸ç¬¦åˆä¸Šè¿°æ¡ä»¶\n");
+             }
+         }//æ”¯ä»˜å¾ªç¯
+         printf("æ‰¾æ‚¨:%då…ƒ\n", -sum);
+
+         int choose;
+         j = 0;
+         while (1)//é€€è´§å¾ªç¯
+         {
+             printf("éœ€è¦å›é€€å•†å“è¯·è¾“å…¥1ï¼Œä¸éœ€è¦è¯·è¾“å…¥2\n");
+             scanf("%d", &choose);
+             if (choose == 2)
+                 break;
+             else if (choose == 1)
+             {
+                 printf("è¯·è¾“å…¥æ‚¨éœ€è¦é€€çš„ç‰©å“å‹å·,è´§æ¶åŠä¸ªæ•°\n");
+                 scanf("%s %d %d", strbuy, &chanback, &quanback);
+                 for (int i = 0; i < 5; i++)
+                 {
+                     if (chanback == chanput[i])//ä½¿å•†å“å¯¹åº”
+                     {
+                         if (quanback > requiresum[i])
+                         {
+                             printf("æ‚¨æœªè´­ä¹°è¯¥æ•°é‡çš„å•†å“ï¼Œè¯·é‡æ–°è¾“å…¥\n");
+                             break;
+                         }
+                         else
+                         {
+                             moneyback = price[i] * quanback;
+                             printf("é€€æ¬¾%då…ƒ\n", moneyback);
+                             quanput[i] += quanback;
+                             requiresum[i] -= quanback;
+                         }
+                     }
+                 }
+             }
+             else
+             {
+                 printf("æ‚¨è¾“å…¥çš„ä¿¡æ¯æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥\n");
+             }
+         }
+         int b;
+         printf("æ‚¨æ˜¯å¦è¿˜éœ€è¦ç»§ç»­è´­ç‰©?\n1.éœ€è¦ 2.ä¸éœ€è¦\n");
+         scanf("%d", &b);
+         if (b == 2)
+         {
+             printf("è¯·å¸¦å¥½æ‚¨çš„ç‰©å“ï¼Œæ¬¢è¿ä¸‹æ¬¡å…‰ä¸´\n");
+             break;
+         }
+         for (int j = 0; j < i; j++)
+         {
+             printf("Name: %s,Channel: %d, Price: %d, Quantity: %d\n", strput[j], chanput[j], price[j], quanput[j]);
+         }
+     }
+    return 0;
+}
